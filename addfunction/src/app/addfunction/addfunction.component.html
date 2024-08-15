@@ -1,0 +1,88 @@
+<!-- <div fxLayout="row" fxLayoutAlign="space-between" fxLayoutGap="15" class="pr-4">
+    <form [formGroup]="addmulticty">
+      <div formArrayName="addmulti">
+        <div *ngFor="let data of addmulti.controls; index as j" [formGroupName]="j">
+          <div class="form-group">
+            <mat-form-field appearance="outline" class="form-field mr-2">
+              <mat-label>From</mat-label>
+              <mat-select id="from" formControlName="multicityarrival">
+                <mat-option *ngFor="let option of Options" [value]="option">{{ option }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+  
+            <mat-form-field appearance="outline" class="form-field ml-2">
+              <mat-label>To</mat-label>
+              <mat-select id="to" formControlName="multicitydepature">
+                <mat-option *ngFor="let option of Options" [value]="option">{{ option }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+  
+            <img id="image" src="./assets/images/reverse.png" class="reverse-button" (click)="reverse(j)">
+          </div>
+  
+          <mat-form-field appearance="outline" class="depature-form-field">
+            <mat-label>Return</mat-label>
+            <input matInput [matDatepicker]="returnPicker" placeholder="Choose a date" formControlName="multireturnDate">
+            <mat-datepicker-toggle matSuffix [for]="returnPicker"></mat-datepicker-toggle>
+            <mat-datepicker #returnPicker></mat-datepicker>
+          </mat-form-field>
+  
+          <button mat-icon-button type="button" (click)="addCity()">
+            <mat-icon color="primary">add_circle_outline</mat-icon>
+          </button>
+  
+          <button mat-icon-button type="button" (click)="removeCity(j)" *ngIf="addmulti.length > 1">
+            <mat-icon color="warn">remove_circle_outline</mat-icon>
+          </button>
+        </div>
+      </div>
+    </form>
+  </div> -->
+  
+
+
+
+
+  <div fxLayout="row" fxLayoutAlign="space-between" fxLayoutGap="15" class="pr-4">
+    <form [formGroup]="addmulticty">
+      <div formArrayName="addmulti">
+        <div *ngFor="let data of addmulti.controls; index as j" [formGroupName]="j">
+          <div class="form-group">
+            <mat-form-field appearance="outline" class="form-field mr-2">
+              <mat-label>From</mat-label>
+              <mat-select id="from" formControlName="multicityarrival">
+                <mat-option *ngFor="let option of Options" [value]="option">{{ option }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+  
+            <mat-form-field appearance="outline" class="form-field ml-2">
+              <mat-label>To</mat-label>
+              <mat-select id="to" formControlName="multicitydepature">
+                <mat-option *ngFor="let option of Options" [value]="option">{{ option }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+  
+            <img id="image" src="./assets/images/reverse.png" class="reverse-button" (click)="reverse(j)">
+          </div>
+  
+          <mat-form-field appearance="outline" class="depature-form-field">
+            <mat-label>Return</mat-label>
+            <input matInput [matDatepicker]="returnPicker" placeholder="Choose a date" formControlName="multireturnDate">
+            <mat-datepicker-toggle matSuffix [for]="returnPicker"></mat-datepicker-toggle>
+            <mat-datepicker #returnPicker></mat-datepicker>
+          </mat-form-field>
+  
+          <!-- Pass the current index to add a new city below the current one -->
+          <button mat-icon-button type="button" (click)="addCity(j)">
+            <mat-icon color="primary">add_circle_outline</mat-icon>
+          </button>
+  
+          <!-- Button to remove the current city -->
+          <button mat-icon-button type="button" (click)="removeCity(j)" *ngIf="addmulti.length > 1">
+            <mat-icon color="warn">remove_circle_outline</mat-icon>
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+  
