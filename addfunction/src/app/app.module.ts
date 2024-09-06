@@ -14,6 +14,10 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { AppComponent } from './app.component';
 import { AddfunctionComponent } from './addfunction/addfunction.component';
 import { RouterModule } from '@angular/router';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatTableModule } from '@angular/material/table';
+import { MatExpansionModule } from '@angular/material/expansion';
+
 
 
 @NgModule({
@@ -33,7 +37,12 @@ import { RouterModule } from '@angular/router';
     MatButtonModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    FlexLayoutModule // Import Flex Layout
+    FlexLayoutModule,
+    MatTableDataSource,
+    MatTableModule,
+    MatButtonModule,
+    MatIconModule,
+    MatExpansionModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

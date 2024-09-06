@@ -43,7 +43,7 @@
 
 
 
-  <div fxLayout="row" fxLayoutAlign="space-between" fxLayoutGap="15" class="pr-4">
+  <!-- <div fxLayout="row" fxLayoutAlign="space-between" fxLayoutGap="15" class="pr-4">
     <form [formGroup]="addmulticty">
       <div formArrayName="addmulti">
         <div *ngFor="let data of addmulti.controls; index as j" [formGroupName]="j">
@@ -72,17 +72,77 @@
             <mat-datepicker #returnPicker></mat-datepicker>
           </mat-form-field>
   
-          <!-- Pass the current index to add a new city below the current one -->
+          
           <button mat-icon-button type="button" (click)="addCity(j)">
             <mat-icon color="primary">add_circle_outline</mat-icon>
           </button>
   
-          <!-- Button to remove the current city -->
+   
           <button mat-icon-button type="button" (click)="removeCity(j)" *ngIf="addmulti.length > 1">
             <mat-icon color="warn">remove_circle_outline</mat-icon>
           </button>
         </div>
       </div>
     </form>
-  </div>
+  </div> -->
+  
+
+
+  <!--other tables-->
+  <mat-table [dataSource]="outerDataSource" class="mat-elevation-z8">
+    <!-- Outer Table Columns -->
+    <ng-container matColumnDef="position">
+      <mat-header-cell *matHeaderCellDef> Position </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
+    </ng-container>
+  
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+    </ng-container>
+  
+    <ng-container matColumnDef="expand">
+      <mat-header-cell *matHeaderCellDef></mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <button mat-icon-button (click)="toggleRow(element)">
+          <mat-icon>{{ expandedElement === element ? 'expand_less' : 'expand_more' }}</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+  
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let element; columns: displayedColumns;" [class.expanded-row]="expandedElement === element"></mat-row>
+  
+    <!-- Expanded Content Row -->
+    <ng-container matColumnDef="expandedDetail">
+      <mat-row *matRowDef="let element; columns: ['expandedDetail'];" class="example-element-row">
+        <mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length">
+          <mat-expansion-panel [expanded]="expandedElement === element">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Additional Details
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <!-- Inner Table -->
+            <mat-table [dataSource]="innerDataSource[element.position]" class="mat-elevation-z8">
+              <ng-container matColumnDef="innerPosition">
+                <mat-header-cell *matHeaderCellDef> Inner Position </mat-header-cell>
+                <mat-cell *matCellDef="let innerElement"> {{innerElement.innerPosition}} </mat-cell>
+              </ng-container>
+  
+              <ng-container matColumnDef="innerName">
+                <mat-header-cell *matHeaderCellDef> Inner Name </mat-header-cell>
+                <mat-cell *matCellDef="let innerElement"> {{innerElement.innerName}} </mat-cell>
+              </ng-container>
+  
+              <mat-header-row *matHeaderRowDef="innerDisplayedColumns"></mat-header-row>
+              <mat-row *matRowDef="let innerElement; columns: innerDisplayedColumns;"></mat-row>
+            </mat-table>
+          </mat-expansion-panel>
+        </mat-cell>
+      </mat-row>
+    </ng-container>
+  
+    <mat-row *matRowDef="let row; columns: ['expandedDetail']; when: isExpansionDetailRow"></mat-row>
+  </mat-table>
   
