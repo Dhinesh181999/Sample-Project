@@ -1,0 +1,9 @@
+<!-- to install qr code -------npm install angularx-qrcode-->
+
+<qrcode [qrdata]="'data'" [allowEmptyString]="true"></qrcode>
+
+
+<div class="payment-page">
+    <h2>Scan the QR Code to Pay</h2>
+    <qrcode [qrdata]="paymentUrl" [width]="200" [errorCorrectionLevel]="'M'"></qrcode>
+  </div>
