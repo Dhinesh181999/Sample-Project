@@ -1,9 +1,30 @@
 <!-- to install qr code -------npm install angularx-qrcode-->
 
-<qrcode [qrdata]="'data'" [allowEmptyString]="true"></qrcode>
+<!-- <qrcode [qrdata]="'data'" [allowEmptyString]="true"></qrcode>
 
 
 <div class="payment-page">
     <h2>Scan the QR Code to Pay</h2>
     <qrcode [qrdata]="paymentUrl" [width]="200" [errorCorrectionLevel]="'M'"></qrcode>
-  </div>
+  </div> -->
+<p>sd</p>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> ID </th>
+      <td mat-cell *matCellDef="let element"> {{ element.id }} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let element"> {{ element.name }} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="age">
+      <th mat-header-cell *matHeaderCellDef> Age </th>
+      <td mat-cell *matCellDef="let element"> {{ element.age }} </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  

@@ -12,6 +12,7 @@ import { MatRadioModule } from '@angular/material/radio'; // For radio buttons
 import { MatCardModule } from '@angular/material/card';  // For mat-card and mat-card-title
 import { MatDividerModule } from '@angular/material/divider';
 import { QRCodeModule } from 'angularx-qrcode';
+import { MatTableModule } from '@angular/material/table';
 
 
 
@@ -31,7 +32,8 @@ import { QRCodeModule } from 'angularx-qrcode';
     MatButtonModule,      
     MatRadioModule,
     MatCardModule,      // Added for mat-card
-    MatDividerModule
+    MatDividerModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

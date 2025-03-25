@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { DataService } from './services/data.service';
 
 @Component({
   selector: 'app-root',
@@ -27,19 +28,23 @@ export class AppComponent {
 
 
 
-  ngOnInit(): void {
-    // Generate a dynamic payment URL each time the component is loaded
-    const uniqueTransactionId = this.generateUniqueTransactionId();
-    // const uniqueTransactionId = this.generateUniqueTransactionId();
-    // const amount = 100; // dynamic amount
-    // const currency = 'INR'; // dynamic currency
-    // const vpa = 'your-merchant-vpa@axisbank'; // dynamic VPA
-    // const payeeName = 'Your Merchant Name'; // dynamic payee name
-    // const merchantCategory = 'your-merchant-category'; // dynamic merchant category
+  // ngOnInit(): void {
+  //   // Generate a dynamic payment URL each time the component is loaded
+  //   const uniqueTransactionId = this.generateUniqueTransactionId();
+
+  //   // const uniqueTransactionId = this.generateUniqueTransactionId();
+  //   // const amount = 100; // dynamic amount
+  //   // const currency = 'INR'; // dynamic currency
+  //   // const vpa = 'your-merchant-vpa@axisbank'; // dynamic VPA
+  //   // const payeeName = 'Your Merchant Name'; // dynamic payee name
+  //   // const merchantCategory = 'your-merchant-category'; // dynamic merchant category
   
-    // this.paymentUrl = this.getPaymentUrl(uniqueTransactionId, amount, currency, vpa, payeeName, merchantCategory);
-    this.paymentUrl = this.getPaymentUrl(uniqueTransactionId);
-  }
+  //   // this.paymentUrl = this.getPaymentUrl(uniqueTransactionId, amount, currency, vpa, payeeName, merchantCategory);
+
+
+  //   //needed
+  //   this.paymentUrl = this.getPaymentUrl(uniqueTransactionId);
+  // }
 
   // Method to generate a unique transaction ID
   generateUniqueTransactionId(): string {
@@ -81,4 +86,22 @@ export class AppComponent {
   
   //   return paymentUrl;
   // }
+
+
+
+
+
+
+
+  /// table data
+  displayedColumns: string[] = ['id', 'name', 'age'];
+  dataSource: any[] = [];
+
+  constructor(private dataService: DataService) {}
+
+  ngOnInit(): void {
+    this.dataService.getData().subscribe((data: any) => {
+      this.dataSource = data;
+    });
+  }
 }
